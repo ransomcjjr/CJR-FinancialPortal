@@ -1,0 +1,77 @@
+﻿@model IEnumerable<CJR_FinancialPortal.Models.BankAccount>
+@using CJR_FinancialPortal.Models
+@{
+    ViewBag.Title = "Index";
+}
+@{
+    Layout = "~/Views/Shared/_DashboardMain.cshtml";
+}
+<h2>Household Bank Accounts</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-colored">
+    <tr>
+        <th>
+            Account Type
+        </th>
+        <th>
+            Account Name
+        </th>
+        <th>
+            Route#
+        </th>
+        <th>
+           Account#
+        </th>
+        <th>
+            Balance
+        </th>
+        <th>
+            Start Amount
+        </th>
+        <th>
+            Active
+        </th>
+        <th></th>
+    </tr>
+@{
+    ReconcileAndBalanceHelper RABH = new ReconcileAndBalanceHelper();
+}
+
+@foreach (var item in Model)
+{
+    double balance = RABH.GetAccountBalance(item.Id);
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.AccountType.Name)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.BankName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RouteNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AccountNumber)
+        </td>
+        <td>
+            @balance
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StartBalance)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Active)
+        </td>
+        <td>
+           | @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+        </td>
+    </tr>
+}
+
+
+</table>

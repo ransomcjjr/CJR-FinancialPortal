@@ -1,0 +1,24 @@
+﻿@model IEnumerable<CJR_FinancialPortal.Models.Notification>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DateSent)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NoteSent)
+        </th>
+
+    </tr>
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateSent)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NoteSent)
+        </td>
+    </tr>
+}
+
+</table>

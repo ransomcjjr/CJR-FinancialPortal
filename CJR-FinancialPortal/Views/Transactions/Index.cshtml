@@ -1,0 +1,139 @@
+﻿@model IEnumerable<CJR_FinancialPortal.Models.Transaction>
+
+@{
+    ViewBag.Title = "Index";
+}
+@{
+    Layout = "~/Views/Shared/_DashboardMain.cshtml";
+}
+<head>
+    <link href="~/CSS/jquery.dataTables.css" rel="stylesheet" />
+    <link href="~/CSS/daterangepicker.css" rel="stylesheet" />
+    <link href="~/CSS/bootstrap-slider.min.css" rel="stylesheet" />
+</head>
+
+<body>
+    <h3>Financial Transactions</h3>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <div>
+        
+            <div class="col-md-12 boxme" style="color:black;">
+               
+                <form style="display:inline-block;margin:0;padding:0" action="@Url.Action("Index")">
+                    <input type="text" id="datapicker" name="query" style="width:300px" value="01/01/2016 1:30 PM - 12/30/2016 2:00 PM" />
+                    <input type="hidden" name="searchType" value="1" />
+                    <input type="submit" value="Filter Date" />
+                </form>
+                
+
+                <form style="display:inline-block;margin:0;padding:0;float:right" action="@Url.Action("Index")">
+                    <b>$ 0</b> <input id="slider" type="text" name="query" class="span2" value="" data-slider-min="10" data-slider-max="25000" data-slider-step="50" data-slider-value="[2000,20000]" /> <b>$ 25,000</b>
+                    <input type="hidden" name="searchType" value="2" />
+                    <input type="submit" value="Filter Amount" />
+                </form>
+        
+            </div>
+ </div>
+    <div>&emsp;</div>
+    <div>
+        <table id="myTable">
+            <thead>
+                <tr>
+                    <th>
+                        Account
+                    </th>
+                    <th>
+                        Budget Item
+                    </th>
+                    <th>
+                       Merchant
+                    </th>
+                    <th>
+                        Payment Type
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Amount)
+                    </th>
+                    <th>
+                        Reconcilet Amt.
+                    </th>
+                    <th>
+                        Voided
+                    </th>
+                    <th>
+                        Date
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+            {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.BankAccount.BankName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Budget.NickName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Merchant.DisplayName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PaymentType.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Amount)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ReconciledAmt)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Archive)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DateAdded)
+                        </td>
+                        <td class="btn-orange">
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        @Html.ActionLink("View All", "Index", null, new { @class = "btn-orange btn" })
+        <p>&emsp;</p>
+   </div>
+</body>
+
+@section scripts {
+    <script src="~/Scripts/moment.min.js"></script>
+    <script src="~/Scripts/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/daterangepicker.js"></script>
+<script src="~/Scripts/bootstrap-slider.min.js"></script>
+    <script>
+    $(document).ready(function () {
+        $('#myTable').DataTable({
+            "order": [[7, "desc"]]
+        });
+    });
+    </script>
+
+
+<script type="text/javascript">
+$(function() {
+    $('#datapicker').daterangepicker();
+});
+</script>
+
+<script type="text/javascript">
+    $("#slider").slider({});
+</script>
+
+    }
+

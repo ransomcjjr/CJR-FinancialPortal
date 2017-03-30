@@ -1,0 +1,40 @@
+﻿@model CJR_FinancialPortal.Models.ApplicationUser
+
+@{
+    ViewBag.Title = "Delete";
+}
+@{
+    Layout = "~/Views/Shared/_DashboardMain.cshtml";
+}
+<h2>Remove/Leave Household</h2>
+
+<h3>Are you sure you want to remove this user from the household?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FullName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FullName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+        @Html.Hidden(Model.Id)
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to Users", "LeaveHouseHold")
+        </div>
+    }
+</div>

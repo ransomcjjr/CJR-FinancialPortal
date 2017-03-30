@@ -1,0 +1,69 @@
+﻿@model IEnumerable<CJR_FinancialPortal.Models.Budget>
+@using CJR_FinancialPortal.Models
+@{
+    ViewBag.Title = "Index";
+}
+@{
+    Layout = "~/Views/Shared/_DashboardMain.cshtml";
+}
+<h2>Monthly Budgeted Items</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-colored">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NickName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BudgetCategory.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BudgetAmount)
+        </th>
+        <th>
+            Current Month Balance
+        </th>
+        <th>
+            Current Month Reconcile Amt.
+        </th>
+        <th>
+            In Active
+        </th>
+        <th></th>
+    </tr>
+@{
+    ReconcileAndBalanceHelper RABH = new ReconcileAndBalanceHelper();
+}
+
+@foreach (var item in Model) {
+    double bal = RABH.GetMonthlyCategoryTransactionTotal(item.Id, DateTime.Now);
+    double rec = RABH.GetMonthlyRecCategoryTransactionTotal(item.Id, DateTime.Now);
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NickName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BudgetCategory.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BudgetAmount)
+        </td>
+        <td>
+            @bal
+        </td>
+        <td>
+            @rec
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Archive)
+        </td>
+        <td>
+           | @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+        </td>
+    </tr>
+}
+
+</table>

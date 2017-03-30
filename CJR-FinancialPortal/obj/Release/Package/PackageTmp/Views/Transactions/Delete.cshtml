@@ -1,0 +1,114 @@
+﻿@model CJR_FinancialPortal.Models.Transaction
+
+@{
+    ViewBag.Title = "Delete";
+}
+@{
+    Layout = "~/Views/Shared/_DashboardMain.cshtml";
+}
+
+<h3>Are you sure you want to delete this transaction?</h3>
+<div>
+    <h4> Delete Transaction</h4>
+    @Html.ActionLink("Complete Transaction List", "Index")&emsp;| @Html.ActionLink("Back to Bank Account","Details","BankAccounts", new { id = Model.BankAccountId },null) &emsp; | @Html.ActionLink("Back to Budget Item","Details", "Budgets", new { id = Model.BudgetId },null)
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Add By
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddedBy.FullName)
+        </dd>
+
+        <dt>
+            Bank Name
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BankAccount.BankName)
+        </dd>
+
+        <dt>
+            Budget Item
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Budget.NickName)
+        </dd>
+
+        <dt>
+            Merchant
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Merchant.DisplayName)
+        </dd>
+
+        <dt>
+            Payment Type
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PaymentType.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Amount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Amount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Note)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Note)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Reconciled)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Reconciled)
+        </dd>
+
+        <dt>
+            Reconciled Amount
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReconciledAmt)
+        </dd>
+
+        <dt>
+            Date
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateAdded)
+        </dd>
+
+        <dt>
+            Voided
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Archive)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

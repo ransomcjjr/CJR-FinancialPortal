@@ -1,0 +1,168 @@
+﻿@model CJR_FinancialPortal.Models.Budget
+
+@{
+    ViewBag.Title = "Details";
+}
+@{
+    Layout = "~/Views/Shared/_DashboardMain.cshtml";
+}
+<head>
+    <link href="~/CSS/jquery.dataTables.css" rel="stylesheet" />
+</head>
+<body>
+<div>
+    <h3>Budget Item Details</h3>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+    <hr />
+
+    <dl class="dl-horizontal boxme">
+        <dt>
+            @Html.DisplayNameFor(model => model.AddByUser.FullName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddByUser.FullName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BudgetCategory.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BudgetCategory.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NickName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NickName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BudgetAmount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BudgetAmount)
+        </dd>
+        <dt>
+            Current Month Balance
+        </dt>
+
+        <dd>
+            @ViewBag.MonthlyTotal
+        </dd>
+        <dt>
+            Current Month Reconcile Amt.
+        </dt>
+
+        <dd>
+            @ViewBag.RecMontlyTotal
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AddedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Archive)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Archive)
+        </dd>
+
+    </dl>
+</div>
+
+<div>
+    <table id="myTable">
+        <thead>
+            <tr>
+                <th>
+                    Account
+                </th>
+                <th>
+                    Nick Name
+                </th>
+                <th>
+                    Merchant
+                </th>
+                <th>
+                    Payment Type
+                </th>
+                <th>
+                    Amount
+                </th>
+                <th>
+                    Reconciled Amt
+                </th>
+                <th>
+                    Voided
+                </th>
+                <th>
+                    Date
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Transactions)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BankAccount.BankName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Budget.NickName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Merchant.DisplayName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PaymentType.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Amount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ReconciledAmt)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Archive)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateAdded)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", "Transactions", new { id = item.Id }, null) |
+                        @Html.ActionLink("Details", "Details", "Transactions", new { id = item.Id }, null) |
+                        @Html.ActionLink("Delete", "Delete", "Transactions", new { id = item.Id }, null)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+</body>
+
+@section scripts {
+    <script src="~/Scripts/jquery.dataTables.min.js"></script>
+    <script>
+    $(document).ready(function () {
+        $('#myTable').DataTable({
+            "order": [[7, "desc"]]
+        });
+    });
+    </script>
+
+}

@@ -1,0 +1,110 @@
+﻿@model CJR_FinancialPortal.Models.Transaction
+
+@{
+    ViewBag.Title = "Details";
+}
+@{
+    Layout = "~/Views/Shared/_DashboardMain.cshtml";
+}
+
+<div>
+    <h3>Transaction Details</h3>
+    <hr />
+    @Html.ActionLink("Complete Transaction List", "Index")&emsp;| @Html.ActionLink("Back to Bank Account", "Details", "BankAccounts", new { id = Model.BankAccountId }, null) &emsp; | @Html.ActionLink("Back to Budget Item", "Details", "Budgets", new { id = Model.BudgetId }, null)
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AddedBy.FullName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddedBy.FullName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BankAccount.BankName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BankAccount.BankName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Budget.NickName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Budget.NickName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Merchant.DisplayName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Merchant.DisplayName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PaymentType.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PaymentType.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Amount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Amount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Note)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Note)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Reconciled)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Reconciled)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReconciledAmt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReconciledAmt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateAdded)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateAdded)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Archive)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Archive)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    |@Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Delete", "Delete", new { id = Model.Id }) |
+</p>
+<div>&emsp;</div>

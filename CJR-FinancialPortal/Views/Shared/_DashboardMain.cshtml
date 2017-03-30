@@ -1,0 +1,269 @@
+﻿<!-- light-blue - v3.3.0 - 2016-03-08 -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Financial Portal Accounting Software</title>
+    <link href="~/CSS/morris.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/CSS/icons.css" rel="stylesheet" />
+     <link href="~/CSS/application.css" rel="stylesheet">
+    <link rel="shortcut icon" href="!-img/favicon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta charset="utf-8">
+    <script>
+        /* yeah we need this empty stylesheet here. It's cool chrome & chromium fix
+           chrome fix https://code.google.com/p/chromium/issues/detail?id=167083
+                      https://code.google.com/p/chromium/issues/detail?id=332189
+        */
+    </script>
+</head>
+<body>
+    <div>&emsp;</div>
+    <div style="width:90%;">
+       @Html.Partial("_LoginPartial")
+    </div>
+    <div>&emsp;</div>
+    <div class="block-area shortcut-area text-align-center">
+        <a title="Home" href="@Url.Action("Index","Home")">
+            <img src="~/Img/Homeadj.png" alt="">
+            <small class="t-overflow">&emsp;&emsp;</small>
+        </a>
+        <a title="Accounts" class="shortcut tile" href="@Url.Action("Index","BankAccounts")">
+            <img src="~/Img/Accountspigadj.png" alt="">
+            <small class="t-overflow">&emsp;&emsp;</small>
+        </a>
+        <a title="Budget" class="shortcut tile" href="@Url.Action("Index","Budgets")">
+            <img src="~/Img/Budgetsadj.png" alt="">
+            <small class="t-overflow">&emsp;&emsp;</small>
+        </a>
+        <a title="Transactions" class="shortcut tile" href="@Url.Action("Index", "Transactions")">
+            <img src="~/Img/Transactionsadj.png" alt="">
+            <small class="t-overflow">&emsp;&emsp;</small>
+        </a>
+
+        <a title="Merchants" class="shortcut tile" href="@Url.Action("Index","Merchants")">
+            <img src="~/Img/Merchantadj.png" alt="">
+            <small class="t-overflow">&emsp;&emsp;</small>
+        </a>
+        <a title="Send Invite" class="shortcut tile" href="@Url.Action("Create","Invitations")">
+            <img src="~/Img/Invitationadj.png" alt="">
+            <small class="t-overflow">&emsp;&emsp;</small>
+        </a>
+        <a title="Leave Household" class="shortcut tile" href="@Url.Action("LeaveHouseHold","HouseHolds")">
+            <img src="~/img/leavehouseholdadj.png" alt="">
+            <small class="t-overflow">&emsp;&emsp;</small>
+        </a>
+        <a title="My Profile" class="shortcut tile" href="@Url.Action("Index","Manage")">
+            <img src="~/img/profileadj.png" alt="">
+            <small class="t-overflow">&emsp;&emsp;</small>
+        </a>
+        <a title="Log Off" class="shortcut tile" href="javascript:document.getElementById('logoutForm').submit()">
+            <img src="~/Img/logoutadj.png" alt="">
+            <span>&emsp;&emsp;</span>
+        </a>
+    </div>
+
+    <div>&emsp;</div>
+        <nav id="sidebar" class="sidebar nav-collapse collapse">
+            <ul id="side-nav" class="side-nav">
+                <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                <li>@Html.ActionLink("Accounts", "Index", "BankAccounts")</li>
+                <li>@Html.ActionLink("Budget", "Index", "Budgets")</li>
+                <li>@Html.ActionLink("Transactions", "Index", "Transactions")</li>
+                <li>@Html.ActionLink("Merchant", "Index", "Merchants")</li>
+                <li>@Html.ActionLink("Send Invitation", "Create", "Invitations")</li>
+                <li>@Html.ActionLink("Leave Household", "LeaveHousehold", "HouseHolds")</li>
+                <li>@Html.ActionLink("Personal Profile", "Index", "Manage")</li>
+            </ul>
+                  @*<h5 class="sidebar-nav-title">Labels <a class="action-link" href="#"><i class="glyphicon glyphicon-plus"></i></a></h5>
+            <!-- some styled links in sidebar. ready to use as links to email folders, projects, groups, etc -->
+            <ul class="sidebar-labels">
+                <li>
+                    <a href="#">
+                        <!-- yep, .circle again -->
+                        <i class="fa fa-circle text-warning"></i>
+                        <span class="label-name">My Recent</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-circle text-gray"></i>
+                        <span class="label-name">Starred</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-circle text-danger"></i>
+                        <span class="label-name">Background</span>
+                    </a>
+                </li>
+            </ul>
+        
+            <h5 class="sidebar-nav-title">Projects</h5>
+            <!-- A place for sidebar notifications & alerts -->
+            <div class="sidebar-alerts">
+                <div class="alert fade in">
+                    <a href="#" class="close" data-dismiss="alert" aria-hidden="true">&times;</a>
+                    <span class="text-white fw-semi-bold">Sales Report</span> <br>
+                    <div class="progress progress-xs mt-xs mb-0">
+                        <div class="progress-bar progress-bar-gray-light" style="width: 16%"></div>
+                    </div>
+                    <small>Calculating x-axis bias... 65%</small>
+                </div>
+                <div class="alert fade in">
+                    <a href="#" class="close" data-dismiss="alert" aria-hidden="true">&times;</a>
+                    <span class="text-white fw-semi-bold">Personal Responsibility</span> <br>
+                    <div class="progress progress-xs mt-xs mb-0">
+                        <div class="progress-bar progress-bar-danger" style="width: 23%"></div>
+                    </div>
+                    <small>Provide required notes</small>
+                </div>
+            </div>*@
+        </nav>    
+    <div class="wrap">
+        
+    <div class="content container">
+        <div class="row">
+            <div class="col-lg-8">
+                <section class="widget">
+                    <header>
+                        <h4>
+                            Expenditures:
+                            <small>
+                                Category Budget vs Actual
+                            </small>
+                        </h4>
+                    </header>
+                    <div class="body no-margin">
+                        <div class="visits-info well well-sm">
+                            <div id="graph"></div>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <div class="panel panel-default" style="padding-left:10px;padding-right:10px">
+                        <div>&emsp;</div>
+                        @RenderBody()
+                    </div>
+                </section>
+            </div>
+<!-------------------------------------Pie Chart For Expenses---------------------------------------------------------------------->
+            <div class="col-lg-4">
+                <section class="widget medium">
+                    <div class="body">
+                        <div id="feed" class="feed">
+                            <div class="wrapper">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading text-align-center" style="background-color:#438eb9;color:white">
+                                        <h3>Budgeted vs Actual Expenditures</h3>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div id="MyChart"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+<!--==============================================================================================================================-->
+                <section class="widget widget-tabs">
+                    <header>
+                        <ul class="nav nav-tabs">
+                            <li class="active">
+                                <a href="#stats" data-toggle="tab">Users</a>
+                            </li>
+                        </ul>
+                    </header>
+                    <div class="body tab-content">
+                        <div id="stats" class="tab-pane active clearfix">
+                            <h5 class="tab-header"><span class="label label-primary"><i class="fa fa-facebook"></i></span>Notifications</h5>
+                            <div id="renderPartial"></div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        </div>
+        <div class="loader-wrap hiding hide">
+            <i class="fa fa-circle-o-notch fa-spin"></i>
+        </div>
+    </div>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+<script src="~/Scripts/raphael-min.js"></script>
+ <script src="~/Scripts/morris.js-0.5.1/morris.min.js"></script>
+<!-- common libraries. required for every page-->
+<script src="lib/jquery-pjax/jquery.pjax.js"></script>
+<script src="lib/widgster/widgster.js"></script>
+<script src="lib/underscore/underscore.js"></script>
+
+<!-- common application js -->
+<script src="js/app.js"></script>
+<script src="js/settings.js"></script>
+
+
+    <script type="text/javascript">
+
+    var chartData
+    $.post('@Url.Action("GetPieChart", "BankAccounts")').then
+    (function (response) {
+    new Morris.Donut({
+    element: 'MyChart',
+    data: response,
+    labelColor: '#060',
+    colors: ['#438eb9', '#d15b47']
+    });
+    chartData = response;
+    });
+
+        $(window).on('resize', function () {
+            debugger;
+            $('MyChart').empty();
+            new Morris.Donut({
+                element: 'MyChart',
+                data: chartData
+            })
+        })
+
+
+        var chartData2
+        $.post('@Url.Action("GetBarChart", "BankAccounts")').then
+        (function (response) {
+            chartData2 = response;
+        barChart = Morris.Bar({
+            element: 'graph',
+            data: response,
+            resize: false,
+            xkey: 'name',
+            ykeys: ['budget','actual'],
+            labels: ['Budget','Actual'],
+            xLableMargin: 2,
+            gridTextColor: '#555',
+            barColors: ['#438eb9', '#d15b47'],
+            xLableAngle: 25,
+            gridTexFamily: 'Monserrat',
+            gridTextSize: 13,
+            preUnits: '$'
+    });
+    chartData2 = response;
+});
+
+        $(window).on('resize', function () {
+            barChart.setData(chartData2);
+        })
+
+ 
+        @*Render Notification Partial*@
+       $(document).ready(function(){
+           $("#renderPartial").load('/HouseHolds/_DashboardUserNotifications');
+       })
+ 
+    </script>
+ 
+@RenderSection("scripts", required: false)
+</body>
+</html>
